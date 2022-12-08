@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            body {font-family: "Lato", sans-serif}
+            .mySlides {display: none}
+            table, th, td {
+            border: solid 1px #ddd;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+        }
+        th { font-weight:bold;}
+        </style>
+        <body>
+            <!-- Navbar -->
+            <div class="w3-top">
+                <div class="w3-bar w3-black w3-card">
+                    <a href="#pi1" class="w3-bar-item w3-button w3-padding-large">
+                    <button class="w3-button w3-black w3-section w3-center" id="psg-list-btn" type="submit">View Passengers</button>
+                    </a>
+                    <a href="#di2" class="w3-bar-item w3-button w3-padding-large">
+                    <button class="w3-button w3-black w3-section w3-center" id="drv-list-btn" type="submit">View Drivers</button>
+                    </a>
+                    <a href="#di2" class="w3-bar-item w3-button w3-padding-large">
+                    <button class="w3-button w3-black w3-section w3-center" id="bkg-list-btn" type="submit">View Bookings</button>
+                    </a>
+                    <a href="#serpsg" class="w3-bar-item w3-button w3-padding-large">
+                        <button class="w3-button w3-black w3-section w3-center" id="psg-ins-btn" type="submit">Search passenger</button>
+                    </a>
+                    <a href="#insertPsg" class="w3-bar-item w3-button w3-padding-large">
+                    <button class="w3-button w3-black w3-section w3-center" id="psg-ins-btn" type="submit">Insert passenger</button>
+                    </a>
+                    <a href="#delPsg" class="w3-bar-item w3-button w3-padding-large">
+                    <button class="w3-button w3-black w3-section w3-center" id="psg-upd-btn" type="submit">Delete Passenger</button>
+                    </a>
+                    <a href="#modifyBk" class="w3-bar-item w3-button w3-padding-large">
+                        <button class="w3-button w3-black w3-section w3-center" id="psg-ins-btn" type="submit">Modify Booking</button>
+                    </a>
+                    <!-- <a href="#close" class="w3-bar-item w3-button w3-padding-large">
+                        <button class="w3-button w3-black w3-section w3-center" id="psg-ins-btn" type="submit">Exit</button>
+                    </a> -->
+                </div>
+            </div>
+
+            <!-- Page content -->
+            <div class="w3-content" style="max-width:2000px;margin-top:46px">
+<br><br><br>
+            <h1 class="w3-section w3-center"> WELCOME TO RIDE MANAGEMENT SYSTEM </h1>
+                <!--Search passenger record-->
+                <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="psg-ins-btn">
+                    <div class="w3-col m6">
+                        <h2 id="serpsg">Search passenger</h2>
+                            <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                                <div class="w3-half">
+                                    <!-- <label class="w3-input w3-border">Enter Passenger ID -->
+                                        <input class="w3-input w3-border" type="text" id="passid" placeholder="Passenger ID" required name="passid">
+                                    <!-- </label> -->
+                                </div>
+                            </div>
+                            <button class="w3-button w3-black w3-section w3-left" id="searchpsg" type="submit">SEARCH</button>
+                    </div>
+                </div>
+
+                <!-- Insert Passenger -->
+                <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="psg-ins-btn">
+                    <div class="w3-col m6">
+                        <h2 id="insertPsg">Register Passenger</h2>
+                        <form action="/api/addpsg" method="POST" id="psgform">
+                            <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                                <div class="w3-half">
+                                    <!-- <label for="pid">PASSENGER ID</label> -->
+                                    <!-- <label class="w3-input w3-border">Passenger ID -->
+                                        <input class="w3-input w3-border" type="text" placeholder="PID" name="pid">
+                                    <!-- </label> -->
+                                    <!-- <label class="w3-input w3-border">First Name -->
+                                        <input class="w3-input w3-border" type="text" placeholder="Firstname" name="pfn">
+                                    <!-- </label> -->
+                                    <!-- <label class="w3-input w3-border">Last Name -->
+                                        <input class="w3-input w3-border" type="text" placeholder="Lastname" name="pln">
+                                    <!-- </label> -->
+                                    <!-- <label class="w3-input w3-border">Contact Number -->
+                                        <input class="w3-input w3-border" type="tel" placeholder="Contactno" name="pcn" maxlength="10">
+                                    <!-- </label> -->
+                                    <label for="pgch1" class="w3-input w3-border" >Female
+                                        <input type="radio" name="pgch1" value="F">
+                                    </label>
+                                    <label for="pgch2" class="w3-input w3-border">Male
+                                        <input type="radio" name="pgch2" value="M"> 
+                                    </label>
+                                    <label class="w3-input w3-border">DOB
+                                        <input class="w3-input w3-border" type="date"  placeholder="DOB" name="pdob">
+                                    </label>
+                                    <!-- <label class="w3-input w3-border">Email address -->
+                                        <input class="w3-input w3-border" type="email" placeholder="Email" name="pe">
+                                    </label>
+                                    <h4 class="w3-wide">Card Details</h4>
+                                        <input class="w3-input w3-border" type="text" placeholder="Payment ID" name="payid">
+                                        <input class="w3-input w3-border" type = "number" placeholder="Card number" name="payacc" maxlength="12">
+                                        <label class="w3-input w3-border">Expiry date
+                                            <input class="w3-input w3-border" type="month" placeholder="Expiry date" name="payexp">
+                                        </label>
+                                </div>
+                            </div>
+                            <button class="w3-button w3-black w3-section w3-left" id="addPsgBtn" type="submit">ADD PASSENGER</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!--Delete passenger record-->
+                <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="psg-ins-btn">
+                    <div class="w3-col m6">
+                        <h2 id="delPsg">Delete passenger</h2>
+                        <form action="/api/delpsg" method="POST">
+                            <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                                <div class="w3-half">
+                                    <!-- <h6>Enter Passenger ID</h6> -->
+                                    <input class="w3-input w3-border" type="text" placeholder="Passenger ID" required name="pasid">
+                                </div>
+                            </div>
+                            <button class="w3-button w3-black w3-section w3-left" type="submit">DELETE PASSENGER</button>
+                        </form>
+                    </div>
+                </div>
+
+
+                <!--Update Booking-->
+                <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="psg-ins-btn">
+                    <div class="w3-col m6">
+                        <h2 id="modifyBk">Modify Booking</h2>
+                        <form action="/api/updateBooking" method="POST" id="bookingform">
+                            <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                                <div class="w3-half">
+                                    <!-- <label for="pid">PASSENGER ID</label> -->
+                                    <label class="w3-input w3-border">Enter Booking ID for which you want to update the FAREAMOUNT
+                                        <input class="w3-input w3-border" type="text" placeholder="BID" name="bid">
+                                    </label>
+                                    <input class="w3-input w3-border" type="number" placeholder="Fare amount" name="fareamt" maxlength="5">
+                                </div>
+                            </div>
+                            <button class="w3-button w3-black w3-section w3-left" id="addPsgBtn" type="submit">UPDATE BOOKING</button>
+                        </form>
+                    </div>
+                </div>
+
+                
+                <!--Report 1-->
+                <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="psg-ins-btn">
+                    <div class="w3-col m6">
+                        <h2 id="report1">Generate Report 1</h2>
+                        <h4>Top 5% of passengers who spent the maximum amount on the fare in a particular month.</h4>
+                            <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                                <div class="w3-half">
+                                    <!-- <label class="w3-input w3-border">Enter Passenger ID -->
+                                        <label class="w3-input w3-border" >From Date
+                                            <input class="w3-input w3-border" type="date" id="fromd" placeholder="From date" required name="fromd">
+                                        </label>
+                                        <label class="w3-input w3-border" >To Date
+                                        <input class="w3-input w3-border" type="date" id="tod" placeholder="To date ID" required name="tod">
+                                        </label>
+                                    <!-- </label> -->
+                                </div>
+                            </div>
+                            <a href="#bgi1" class="w3-bar-item w3-button w3-padding-large">
+                            <button class="w3-button w3-black w3-section w3-left" id="genRep1" type="submit">GENERATE REPORT 1</button>
+                            </a>
+                    </div>
+                </div>
+
+                <!--Report 2-->
+                <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="psg-ins-btn">
+                    <div class="w3-col m6">
+                        <h2 id="report2">Generate Report 2</h2>
+                        <h4>Top 50% of cities where maximum ride bookings are made.</h4>
+                            <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                                <div class="w3-half">
+                                    <!-- <label class="w3-input w3-border">Enter Passenger ID -->
+                                        <label class="w3-input w3-border" >Enter range of BID's you want to search on
+                                            <input class="w3-input w3-border" type="text" id="bks" placeholder="Start BID" required name="bks">
+                                            <input class="w3-input w3-border" type="text" id="bke" placeholder="End BID" required name="bke">
+                                        </label>
+                                    <!-- </label> -->
+                                </div>
+                            </div>
+                            <a href="#bgi2" class="w3-bar-item w3-button w3-padding-large">
+                                <button class="w3-button w3-black w3-section w3-left" id="genRep2" type="submit">GENERATE REPORT 2</button>
+                            <a>
+                    </div>
+                </div>
+                <!--Report 3-->
+                <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="psg-ins-btn">
+                    <div class="w3-col m6">
+                        <h2 id="report3">Generate Report 3</h2>
+                        <h4>Which month of the year experiences maximum ride bookings.</h4>
+                            <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                                <div class="w3-half">
+                                     <label class="w3-input w3-border">Enter Last two digits of year
+                                        <input class="w3-input w3-border" type="year" id="byr" placeholder="Year" required name="byr" maxlength="2">
+                                    </label>
+                                </div>
+                            </div>
+                            <a href="#bgi3" class="w3-bar-item w3-button w3-padding-large">
+                                <button class="w3-button w3-black w3-section w3-left" id="genRep3" type="submit">GENERATE REPORT 3</button>
+                            </a>
+                    </div>
+                </div>
+
+
+                    <!-- 
+                       <div id="t1">
+                            <ul id="list"></ul>
+                        </div> -->
+                <!--Display records-->
+                <div>
+                    <!-- <h3 class="w3-wide"  id="disp">Display</h3> -->
+                    <h4 id="pi1">Passenger table Records</h4>
+                    <h4 id="di2">Driver table Records</h4>
+                    <h4 id="bi3">Booking table Records</h4>
+                    <h4 id="bgi1">Report1: Top 5% of passengers who spent the maximum amount on the fare in a month.</h4>
+                    <h4 id="bgi2">Report2: Top 50% of cities where maximum ride bookings are made.</h4>
+                    <h4 id="bgi3">Report3: Which month of the year experiences maximum ride bookings.</h4>
+
+                    <p id="showData"></p>
+                </div>
+                        
+            <br>
+            <br>
+            <br>
+
+                    </div>
+                </div>
+        
+            <!-- End Page Content -->
+            </div>
+
+            <script language="JavaScript" type="text/javascript"  src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+            <script>
+
+               function add(data) {
+                    var ul = document.getElementById("list");
+                    var li = document.createElement("li");
+                    li.appendChild(document.createTextNode(data));
+                    ul.appendChild(li);
+                }
+
+                function hideElem(id) {
+                    var node = document.getElementById(id);
+                    node.style.visibility = 'hidden';
+                    }
+                    
+                function showElem(id) {
+                    var node = document.getElementById(id);
+                    node.style.visibility = 'visible';
+                }
+
+                $(document).ready(function() {
+                    hideElem('pi1');
+                    hideElem('di2');
+                    hideElem('bi3');
+                    hideElem('bgi1');
+                    hideElem('bgi2');
+                    hideElem('bgi3');
+                    let tableFromJson = (data) => {
+
+                        let col = [];
+
+                        for(r in data.metaData){
+                            col.push((data.metaData[r].name));
+                            }
+                            // Create table.
+                            const table = document.createElement("table");
+
+                            // Create table header row using the extracted headers above.
+                            let tr = table.insertRow(-1);                   // table row.
+
+                            for (let i = 0; i < col.length; i++) {
+                                let th = document.createElement("th");      // table header.
+                                th.innerHTML = col[i];
+                                tr.appendChild(th);
+                            }
+
+                            // add json data to the table as rows.
+                            for (let i = 0; i < data.rows.length; i++) {
+
+                                tr = table.insertRow(-1);
+
+                                for (let j = 0; j < col.length; j++) {
+                                    let tabCell = tr.insertCell(-1);
+                                    tabCell.innerHTML = data.rows[i][j];
+                                }
+                            }
+                                // Now, add the newly created table with json data, to a container.
+                                const divShowData = document.getElementById('showData');
+                                divShowData.innerHTML = "";
+                                divShowData.appendChild(table);
+                        }
+
+                    //Search Passenger
+                    $("#searchpsg").click(function(e) {                  
+                        e.preventDefault();
+                        showElem('pi1'); 
+                        hideElem('di2'); hideElem('bi3'); hideElem('bgi1'); hideElem('bgi2'); hideElem('bgi3');
+                        param = $('#passid').val()
+                        console.log(param);
+                        $.getJSON('/search-psg', {pid : param}, function (data, textStatus, jqXHR){
+                            tableFromJson(data);
+                        });
+                    });
+
+                    // //REPORT-1
+                    // $("#report1").click(function(e) {
+                    //     e.preventDefault();
+                    //     showElem('bgi1');
+                    //     hideElem('pi1'); hideElem('di2'); hideElem('bi3'); hideElem('bgi2'); hideElem('bgi3');
+                    //     $.getJSON('/generate-report-1', function (data, textStatus, jqXHR){      
+                    //         tableFromJson(data);
+                    //     });
+                    // });
+
+                    //REPORT-1
+                    $("#genRep1").click(function(e) {
+                        e.preventDefault();
+                        console.log("hi");
+                        showElem('bgi1');
+                        hideElem('pi1'); hideElem('di2'); hideElem('bi3'); hideElem('bgi2'); hideElem('bgi3');
+                        $.getJSON('/generate-report-1', {fromd : $('#fromd').val(), tod : $('#tod').val()},function (data, textStatus, jqXHR){      
+                            tableFromJson(data);
+                        });
+                    });
+
+                    //REPORT-2
+                    $("#genRep2").click(function(e) {
+                        e.preventDefault();
+                        showElem('bgi2');
+                        hideElem('pi1'); hideElem('di2'); hideElem('bi3'); hideElem('bgi1'); hideElem('bgi3');
+
+                        $.getJSON('/generate-report-2', {bks : $('#bks').val(), bke : $('#bke').val()}, function (data, textStatus, jqXHR){
+                            tableFromJson(data);
+                        });
+                    });
+
+                    //REPORT-3
+                    $("#genRep3").click(function(e) {
+                        e.preventDefault();
+                        showElem('bgi3');
+                        hideElem('pi1'); hideElem('di2'); hideElem('bi3'); hideElem('bgi2'); hideElem('bgi1');
+                        param =  $('#byr').val()
+                        console.log(param);
+                        $.getJSON('/generate-report-3', {byr : param}, function (data, textStatus, jqXHR){
+                            tableFromJson(data);
+                    });
+                    });
+                    
+                    //PASSENGER-LIST
+                    $("#psg-list-btn").click(function(e) {
+                        e.preventDefault();
+                        showElem('pi1'); 
+                        hideElem('bgi1'); hideElem('di2'); hideElem('bi3'); hideElem('bgi2'); hideElem('bgi3');
+                        $.getJSON('/psg-list', function (data, textStatus, jqXHR){
+                        
+                        tableFromJson(data);
+                        
+                        // ul = document.getElementById("list");
+                        // ul.innerHTML = "";
+
+                        // for(r in data.metaData){
+                        //    // console.log(r);
+                        //     add(data.metaData[r].name);
+                        //     //add(data.metaData[r]);
+                        // }
+                        // for(r in data.rows){
+                        //     //console.log(r);
+                        //     //var x = data.rows[r]
+                        //     add(data.rows[r]);
+                        // }
+                    });
+                    });
+
+                    //DRIVER LIST
+                    $("#drv-list-btn").click(function(e) {
+                        e.preventDefault();
+                        showElem('di2');
+                        hideElem('pi1'); hideElem('bgi1'); hideElem('bi3'); hideElem('bgi2'); hideElem('bgi3');
+                        $.getJSON('/drv-list', function (data, textStatus, jqXHR){
+                            tableFromJson(data);
+                        });
+                    });
+
+                    //BOOKING LIST
+                    $("#bkg-list-btn").click(function(e) {
+                        e.preventDefault();
+                        showElem('bi3');
+                        hideElem('pi1'); hideElem('di2'); hideElem('bgi1'); hideElem('bgi2'); hideElem('bgi3');
+                        $.getJSON('/bkg-list', function (data, textStatus, jqXHR){
+                        
+                        tableFromJson(data);
+                    });
+                    });
+
+                    //Make a Booking
+                    $("#psgBkBtn").click(function(e) {
+                        $.getJSON('/booking',function (data, textStatus){
+                            console.log(data);
+                        });
+                    });  
+                });
+            </script>
+        </body>
+    </html>
