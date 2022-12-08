@@ -3,7 +3,7 @@ How to run:
 2. Connects to a backend Oracle database. (Provide the database credentials in the checkConnection() api in the index.js file)
 3. From terminal, call node .\index.js
 4. Goto http://localhost:3000/ in browser
-5. In Navbar we have the follwing options:
+5. In Navbar we have the following options:
     a. View Passengers, View Drivers and View Bookings show all the contents of these tables.
     b. Search, Insert and Delete passenger options are given to search/insert/delete a particular passenger record.
     c. Modify Booking - Modifies the fare amount of a given BookingID for the provided BID value. 
